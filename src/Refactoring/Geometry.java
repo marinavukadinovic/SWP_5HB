@@ -6,14 +6,18 @@ import java.util.UUID;
  * Exceptions entfernen und in eigene Klassen legen*/
 
 /*
- * Geometry Class abstract machen, da die Klasse als Vorlage und nicht Bauplan gilt*/
+ * Geometry Class abstract machen, da die Klasse als Vorlage und nicht Bauplan gilt!*/
 
 public abstract class Geometry implements Comparable<Geometry> {
+	private static UUID UUID = null;
 	private UUID id;
 	private boolean filled;
 	private String color;
-	private double width;
-	private double height;
+	
+/*
+ * Löschen von width und height*/
+	
+	
 	
 /*
  * Variablendeklaration und Initialisierung trennen*/	
@@ -23,8 +27,6 @@ public abstract class Geometry implements Comparable<Geometry> {
 		this.id = UUID.randomUUID();
 		this.filled = false;
 		this.color = "";
-		this.width = 0;
-		this.height = 0;
 
 	}
 
@@ -38,7 +40,7 @@ public abstract class Geometry implements Comparable<Geometry> {
 	 * Löschen von IdException und if-Abfraget*/
 	
 	protected Geometry(UUID id, boolean filled, String color) {
-		this.id = id;
+		this.id = UUID;
 		this.filled = filled;
 		this.color = color;
 	}
@@ -47,9 +49,7 @@ public abstract class Geometry implements Comparable<Geometry> {
 	 * Löschen von IdException und if-Abfrage*/
 	
 	protected Geometry(UUID id, double width, double height, boolean filled, String color) {
-		this.id = id;
-		this.width = width;
-		this.height = height;
+		this.UUID = id;
 		this.filled = filled;
 		this.color = color;
 	}
@@ -57,13 +57,13 @@ public abstract class Geometry implements Comparable<Geometry> {
 	/*
 	 * calculateArea und getPerimeter abstract machen*/
 	
-	public  abstract double calculateArea();
+	public abstract double calculateArea();
 
-	public  abstract double getPerimeter();
+	public abstract double getPerimeter();
 
 	/*
 	 * int zu double ändern*/
-	public double compareTo(Geometry c) {
+	public int compareTo(Geometry c) {
 		if (this.calculateArea() > c.calculateArea())
 			return 1;
 		else if (this.calculateArea() < c.calculateArea())

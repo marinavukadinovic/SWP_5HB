@@ -7,21 +7,32 @@ public class Rectangle extends Geometry {
 	/*
 	 * DT von id von int überall zu UUID ändern*/
 	
-	
-	private UUID id;
 	private final double width;
 	private final double height;
 	
 	
 	/*
-	 * Löschen von IdException und if-Abfraget*/
+	 * Löschen von IdException und if-Abfragen*/
 
-	protected Rectangle(UUID id, double width, double height, boolean filled, String color) {
+	protected Rectangle(double width, double height, boolean filled, String color) throws InvalidNumberException{ 
+		if (width <0) {
+			throw new InvalidNumberException("Radius less than zero not allowed!");
+		}
 		
-		this.setUUID(UUID.randomUUID());
 		this.width = width;
 		this.height = height;
 	}
+	
+	/*Getter + Setter generiren + setid löschen*/
+	
+	public double getWidth() {
+		return width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+	
 
 	@Override
 	public double calculateArea() {
@@ -33,19 +44,6 @@ public class Rectangle extends Geometry {
 		return 2 * (width + height);
 	}
 
-	/*Getter + Setter generiren + setid löschen*/
-	
-	public int getUUID() {
-		return UUID;
-	}
-
-	public void setUUID(UUID uuid) {
-		uuid = uuid;
-	}
-
-	public UUID getId() {
-		return id;
-	}
 
 
 }

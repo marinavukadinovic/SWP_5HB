@@ -1,6 +1,11 @@
-class EventService {
+package Refactoring;
 
-//Data clumps+Long Method+Long Parameter List+
+
+public class EventService {
+
+/*
+ * Data clumps+Long Method+Long Parameter List -> Bad smells also ändern*/	
+
     public void registerParticipant(
             String firstName,
             String lastName,
@@ -15,12 +20,14 @@ class EventService {
         if (firstName == null || lastName == null || email == null) {
             System.out.println("Invalid participant data");
             return;
-            
- // Statt sysout throuws exception  
         }
-
+        
+ /*
+  * Anstelle von sysout Exception throwen*/
+      
         if (!email.contains("@")) {
-            System.out.println("Invalid email");
+           throw InvaliIdException;
+           System.out.println("Invalid email");
             return;
         }
         
@@ -31,8 +38,11 @@ class EventService {
         System.out.println(street);
         System.out.println(zip + " " + city);
 
-        
-// Kommentare durch leicht verständlichen Code ersetzten
+/*
+ * Kommentare durch leicht verständlichen Code / aussagekräftige Namen ersetzen*
+ */      
+
+
 // Magic Numbers 
         
         // Preis berechnen
@@ -44,7 +54,6 @@ class EventService {
 // Magic Number 
         }
 
-        // Bestätigung ausgeben
         System.out.println("Event: " + eventName);
         System.out.println("Total price: " + total);
         System.out.println("Confirmation sent to " + email);

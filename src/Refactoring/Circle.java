@@ -1,34 +1,34 @@
 package Refactoring;
 
+/*
+ * private int id, private boolean filled, private String color, entfernt, da nicht gelesen
+ */
+
 public class Circle extends Geometry {
 
-	private final int id;
+/*
+ * if (this.id==id), this.id = id, this.filled = filled, this.color = color entfernt, da dead Code
+ */
+
 	private double radius;
-	private final boolean filled;
-	private final String color;
-
-	protected Circle(int id, double radius, boolean filled, String color) throws IdException {
-
-		super(id, filled, color);
-		if (this.id == id) {
-			throw new IdException("Id must be unique!");
-		}
-		this.id = id;
-		this.filled = filled;
-		this.color = color;
-
-		if (radius < 0) {
-			System.out.println("Radius less than zero not allowed!");
-		}
-
-// trows new Exception 
+	
+/*
+ * int id rauslöschen*/
+	
+	protected Circle(double radius, boolean filled, String color) throws InvalidNumberException {
+		super(filled, color);
+		if (radius <= 0) {
+			throw new InvalidNumberException("Radius less than zero not allowed!");
+	}
+	
 		this.radius = radius;
 	}
 
-// Magic Number durch 
+	
 	public double getRadius() {
 		return radius;
 	}
+	
 
 	public void setRadius(double radius) {
 		this.radius = radius;
